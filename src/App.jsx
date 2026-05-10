@@ -8,9 +8,8 @@ import Profile from "./Profile";
 import { Provider } from "react-redux";
 import appStore from "./appstore";
 import Feed from "./Feed";
-
-
-// mongodb+srv://pgballia97_db_user:pt4m5s1uTJhLepWd@developerworld.l7aaoeu.mongodb.net/
+import Connections from "./Connections";
+import Request from "./Request";
 const App = () => {
   return (
     <>
@@ -20,7 +19,9 @@ const App = () => {
             <Route path="/" element={<Body></Body>}>
              <Route path="/" element={<Feed/>} />
               <Route path="/login" element={<Login />} />
-              <Route path="/profile" element={<Profile />} />
+              <Route path="/profile/view" element={<Profile />} />
+              <Route path="/user/connection" element={<Connections />} />
+              <Route path="/user/requests/recieved" element={<Request />} />
             </Route>
           </Routes>
         </BrowserRouter>

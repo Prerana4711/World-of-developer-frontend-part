@@ -17,7 +17,9 @@
     "react-dom": "^19.2.4",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.15.0",
-    "tailwindcss": "^4.2.2"
+    "sonner": "^2.0.7",
+    "tailwindcss": "^4.2.2",
+    "validator": "^13.15.35"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

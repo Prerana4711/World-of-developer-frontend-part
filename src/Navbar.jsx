@@ -1,16 +1,33 @@
+import axios from 'axios'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-
+import { Link } from 'react-router-dom'
+import { removeUser } from './userSlice'
+import base_url from "./config"
+import userImage from '../public/user2.jpeg'
 const Navbar = () => {
     const dispatch = useDispatch()
-    
+    const naviate= useNavigate()
     const user = useSelector(store=>store.user)
     
+    const handlelogout = async()=>{
+    try{  await axios.post(base_url+"/logout",{}, { withCredentials: true })
+      dispatch(removeUser())
+       naviate("/login")
+    }
+    catch(err){
+         console.log(err.message) 
+        
+    }
+    }
+       const handleImageError = (e) => {
+          e.target.src = userImage;   
+        };
   return (
-    <div className="navbar bg-base-100 shadow-sm">
-  <div className="flex-1">
-    <a className="btn btn-ghost text-xl">DeveloperWorld</a>
+    <div className="navbar bg-base-300 shadow-sm shadow-gray-800">
+  <div className="flex-1 ">
+    <a className="btn btn-ghost text-xl bg-base-100" href="/">👩🏻‍💻 DeveloperWorld</a>
   </div>
   <div className="flex gap-2">
    
@@ -18,21 +35,22 @@ const Navbar = () => {
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
           <img
-            alt="Tailwind CSS Navbar component"
-            src={user?.photourl} />
+            alt="My Profile"
+            src={user?.photourl || userImage}  onError={handleImageError}/>
         </div>
       </div>
       <ul
         tabIndex="-1"
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        <li>
-          <a >
+        className="menu gap-2 menu-sm dropdown-content bg-base-300 rounded-box z-1 mt-5  w-auto p-2 items-center shadow">
+        <li className=' bg-base-100'>
+          <Link to="/profile/view">
             Profile
            
-          </a>
+          </Link>
         </li>
-        <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
+        <li className=' bg-base-100'><Link to="/user/connection">Connections</Link></li>
+        <li className=' bg-base-100'><Link to="/user/requests/recieved">Requests</Link></li>
+        <li className=' bg-base-100'><button onClick={()=>handlelogout()}>Logout</button></li>
       </ul>
     </div>}
   </div>
