@@ -92,7 +92,7 @@ const Profile = () => {
   }
   if (!user) return;
   return (
-    <div className="flex justify-center gap-8">
+    <div className="flex flex-col md:flex-row items-center justify-center gap-8">
       <Toaster position="top-center" richColors closeButton />
       <div className="mt-8 ">
         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
