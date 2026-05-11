@@ -12,7 +12,7 @@ import Connections from "./Connections";
 import Request from "./Request";
 const App = () => {
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <Provider store={appStore}>
         <BrowserRouter basename="/">
           <Routes>
@@ -26,7 +26,7 @@ const App = () => {
           </Routes>
         </BrowserRouter>
       </Provider>
-    </>
+    </div>
   );
 };
 export default App;
